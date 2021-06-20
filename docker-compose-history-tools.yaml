@@ -1,0 +1,12 @@
+version: '3'
+services:
+  ship-history-tools:
+    image: eosio/history-tools
+    container_name: history-tools
+    environment:
+      PGUSER: postgres
+      PGPASSWORD: ${POSTGRES_PASSWORD}
+      PGDATABASE: postgres
+      PGHOST: ${POSTGRES_HOST}
+      PGPORT: 5432
+    command: fill-pg --plugin fill_plugin --fill-connect-to 0.0.0.0:8080 --fill-skip-to 0 --plugin fill_pg_plugin --fill-trx "-:executed::eosio:onblock" --fill-trx "+:executed:::" --fpg-drop --fpg-create
