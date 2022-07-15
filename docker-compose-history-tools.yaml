@@ -6,7 +6,7 @@ services:
     environment:
       PGUSER: postgres
       PGPASSWORD: ${POSTGRES_PASSWORD}
-      PGDATABASE: postgres
+      PGDATABASE: ${POSTGRES_DB}
       PGHOST: ${POSTGRES_HOST}
-      PGPORT: 5432
+      PGPORT: ${POSTGRES_PORT}
     command: fill-pg --plugin fill_plugin --fill-connect-to 0.0.0.0:8080 --fill-skip-to 0 --plugin fill_pg_plugin --fill-trx "-:executed::eosio:onblock" --fill-trx "+:executed:::" --fpg-drop --fpg-create
